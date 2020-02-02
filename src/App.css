@@ -1,3 +1,22 @@
+.recipe-div {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border-radius: 2px;
+  border: 1px solid black;
+}
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+.recipe-img {
+  height: 150px;
+  border-radius: 50%;
+}
+
+.ingredients-p {
+  align-items: center;
+  justify-content: center;
+}
+.ingredients-div {
+  margin-top: 1.5em;
 }

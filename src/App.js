@@ -4,34 +4,74 @@ import "./logo.svg";
 import axios from "axios";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      recipes: []
-    };
-    // this.showRecipe = this.showRecipe.bind(this);
-  }
+  state = {
+    recipes: [],
+    ing: [],
+    gradient: ""
+  };
   componentDidMount() {
-    const key = "banana";
-    const APP_ID = "caed25b5";
-    const APP_KEY = "09a9d503749688f8a251838da8089fca";
-    let query = `https://api.edamam.com/search?q=${key}&app_id=${APP_ID}&app_key=${APP_KEY}`;
-    axios.get(query).then(res => this.setState({ recipes: res.data.hits }));
+    this.yeniFunc();
   }
 
-  render() {
+  yeniFunc = () => {
+    const APP_ID = "caed25b5";
+    const APP_KEY = "09a9d503749688f8a251838da8089fca";
+    let query = `https://api.edamam.com/search?q=${this.state.gradient}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+    axios.get(query).then(res => this.setState({ recipes: res.data.hits }));
+  };
+
+  showIng = item => {
+    let ing = item.map(item => {
+      return <p>{item.text}</p>;
+    });
+    return <p className="ingredients-p">{ing}</p>;
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  showItems = () => {
     let items = this.state.recipes
       .map(recipe => recipe.recipe)
       .map(item => {
         return (
-          <div>
-            <div>{item.label}</div>
-            <img src={item.image}></img>
+          <div className="recipe-div">
+            <div>
+              <div>{item.label}</div>
+              <img className="recipe-img" src={item.image}></img>
+            </div>
+            <div>
+              <div className="ingredients-div">
+                {this.showIng(item.ingredients)}
+              </div>
+            </div>
           </div>
         );
       });
-    console.log(this.state.recipes.map(recipe => recipe.recipe));
-    return <div className="App">{items}</div>;
+    return items;
+  };
+
+  render() {
+    console.log(this.state.gradient);
+    return (
+      <div className="App">
+        <div></div>
+        <div>
+          <input
+            type="text"
+            name="gradient"
+            value={this.state.gradient}
+            onChange={event => this.handleChange(event)}
+            placeholder="Malzeme ismi giriniz.."
+          />
+          <button onClick={this.yeniFunc}>Submit</button>
+          <div>{this.showItems()}</div>
+        </div>
+        <div></div>
+      </div>
+    );
   }
 }
 
