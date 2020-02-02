@@ -1,3 +1,3 @@
 # Food Recipe App
 
-[Click here to visit site]("https://turkaytunc.github.io/recipe-app/")
+[Siteye gitmek icin tikla]("https://turkaytunc.github.io/recipe-app/")

@@ -64,7 +64,7 @@ class App extends React.Component {
             name="gradient"
             value={this.state.gradient}
             onChange={event => this.handleChange(event)}
-            placeholder="Malzeme ismi giriniz.."
+            placeholder="Malzeme ismi giriniz..(Ingilizce)"
           />
           <button onClick={this.yeniFunc}>Submit</button>
           <div>{this.showItems()}</div>
