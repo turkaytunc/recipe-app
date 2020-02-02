@@ -60,6 +60,7 @@ class App extends React.Component {
         <div></div>
         <div>
           <input
+            style={{ width: "240px" }}
             type="text"
             name="gradient"
             value={this.state.gradient}
