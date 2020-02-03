@@ -10,26 +10,31 @@ class App extends React.Component {
     gradient: ""
   };
   componentDidMount() {
-    this.yeniFunc();
+    this.getData();
   }
 
-  yeniFunc = () => {
+  getData = () => {
     const APP_ID = "caed25b5";
     const APP_KEY = "09a9d503749688f8a251838da8089fca";
     let query = `https://api.edamam.com/search?q=${this.state.gradient}&app_id=${APP_ID}&app_key=${APP_KEY}`;
     axios.get(query).then(res => this.setState({ recipes: res.data.hits }));
   };
 
-  showIng = item => {
-    let ing = item.map(item => {
-      return <p>{item.text}</p>;
-    });
-    return <p className="ingredients-p">{ing}</p>;
-  };
-
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  };
+  handleKeyPress = event => {
+    if (event.key === "Enter") {
+      this.getData();
+    }
+  };
+
+  showIng = item => {
+    let ing = item.map(item => {
+      return <li className="ingredients-li">{item.text}</li>;
+    });
+    return <p className="ings">{ing}</p>;
   };
 
   showItems = () => {
@@ -39,7 +44,7 @@ class App extends React.Component {
         return (
           <div className="recipe-div">
             <div>
-              <div>{item.label}</div>
+              <div className="item-label-div">{item.label}</div>
               <img className="recipe-img" src={item.image}></img>
             </div>
             <div>
@@ -60,14 +65,17 @@ class App extends React.Component {
         <div></div>
         <div>
           <input
-            style={{ width: "240px" }}
+            className="input-box"
             type="text"
             name="gradient"
             value={this.state.gradient}
             onChange={event => this.handleChange(event)}
             placeholder="Malzeme ismi giriniz..(Ingilizce)"
+            onKeyPress={this.handleKeyPress}
           />
-          <button onClick={this.yeniFunc}>Submit</button>
+          <button className="submit-button" onClick={this.getData}>
+            Tarif Getir
+          </button>
           <div>{this.showItems()}</div>
         </div>
         <div></div>
