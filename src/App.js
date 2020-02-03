@@ -43,9 +43,11 @@ class App extends React.Component {
       .map(item => {
         return (
           <div className="recipe-div">
-            <div>
+            <div className="label-img">
               <div className="item-label-div">{item.label}</div>
-              <img className="recipe-img" src={item.image}></img>
+              <div className="img-inner-div">
+                <img className="recipe-img" src={item.image}></img>
+              </div>
             </div>
             <div>
               <div className="ingredients-div">
@@ -62,8 +64,7 @@ class App extends React.Component {
     console.log(this.state.gradient);
     return (
       <div className="App">
-        <div></div>
-        <div>
+        <div className="app-second-div">
           <input
             className="input-box"
             type="text"
@@ -78,7 +79,6 @@ class App extends React.Component {
           </button>
           <div>{this.showItems()}</div>
         </div>
-        <div></div>
       </div>
     );
   }
