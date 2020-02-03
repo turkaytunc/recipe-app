@@ -74,7 +74,7 @@
   border: 1px solid #ccc;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 720px) {
   .App {
     display: grid;
     grid-template-columns: 1fr;
