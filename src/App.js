@@ -16,7 +16,7 @@ class App extends React.Component {
   getData = () => {
     const APP_ID = "caed25b5";
     const APP_KEY = "09a9d503749688f8a251838da8089fca";
-    let query = `https://api.edamam.com/search?q=${this.state.gradient}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+    let query = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${this.state.gradient}&app_id=${APP_ID}&app_key=${APP_KEY}`;
     axios.get(query).then(res => this.setState({ recipes: res.data.hits }));
   };
 
