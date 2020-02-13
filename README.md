@@ -1,3 +1,5 @@
 # Food Recipe App
 
-[Siteye gitmek icin tikla](https://turkaytunc.github.io/recipe-app/)
+- Delicious food recipes
+
+[Click here to visit site](https://turkaytunc.github.io/recipe-app/)

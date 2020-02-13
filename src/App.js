@@ -71,11 +71,11 @@ class App extends React.Component {
             name="gradient"
             value={this.state.gradient}
             onChange={event => this.handleChange(event)}
-            placeholder="Malzeme ismi giriniz..(Ingilizce)"
+            placeholder="Please enter ingredients.."
             onKeyPress={this.handleKeyPress}
           />
           <button className="submit-button" onClick={this.getData}>
-            Tarif Getir
+            Get Recipe
           </button>
           <div>{this.showItems()}</div>
         </div>
